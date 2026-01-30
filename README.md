@@ -65,8 +65,7 @@ bigmart-pyspark-interview/
 │   ├── 18_repartition_vs_coalesce.py
 │   ├── 19_skew_handling_salt.py
 │   └── 20_checkpoint_example.py
-│
-└── advanced_pyspark_interview_scenarios.py  # Consolidated end-to-end pipeline
+    └── advanced_pyspark_interview_scenarios.py  # Consolidated end-to-end pipeline
 ```
 
 ---
