@@ -106,3 +106,103 @@ def validate_schema(df, expected: StructType):
         return False
     return True
 ```
+**11. What are the key differences between an RDD and a DataFrame in PySpark, and when might you choose one over the other?**
+
+RDDs are the low-level abstraction representing an immutable distributed collection of objects. They provide fine-grained control, support arbitrary Python objects, and require manual optimization (e.g. using `map`, `filter`). DataFrames are a higher-level abstraction built on top of RDDs with a schema and optimized by Catalyst; they support SQL queries and are generally faster due to automatic optimizations. Use DataFrames for most analytics and ETL tasks; use RDDs when you need custom serialization or untyped transformations not supported by DataFrames.
+
+**12. How do you handle corrupt or malformed records when reading JSON/CSV files?**
+
+Use options like `mode` and `columnNameOfCorruptRecord` with `spark.read` to capture or skip bad rows. Example:
+
+```python
+ df = (spark.read.option("mode", "PERMISSIVE")
+                .option("columnNameOfCorruptRecord", "_corrupt_record")
+                .json("/path/to/file.json"))
+```
+
+You can then filter or log rows where `_corrupt_record` is not null.
+
+**13. Describe how to tune a Spark job's parallelism and resource configuration for production.**
+
+Adjust `spark.sql.shuffle.partitions`, `spark.default.parallelism`, executor memory (`spark.executor.memory`), and cores (`spark.executor.cores`) based on data size and cluster capacity. Monitor with the UI and use dynamic allocation if available. Set `spark.serializer` to `KryoSerializer` and register custom classes to reduce serialization overhead.
+
+**14. Provide an example of using a PySpark UDF and explain the performance implications.**
+
+```python
+from pyspark.sql.functions import udf
+from pyspark.sql.types import IntegerType
+
+@udf(IntegerType())
+def add_one(x):
+    return x + 1
+
+df.withColumn("val1", add_one("val")).show()
+```
+
+UDFs break Catalyst optimizations and run row-by-row in Python, causing serialization overhead. Prefer built-in functions or pandas UDFs (vectorized) when possible.
+
+**15. What is checkpointing in Spark and when should it be used?**
+
+Checkpointing writes RDD/DataFrame to durable storage (e.g. HDFS) to truncate the lineage graph. Use it when lineage becomes very long (e.g. after many transformations or while using iterative algorithms) to avoid stack overflow and recomputation. There are two types: RDD checkpoint (`rdd.checkpoint()`) and streaming checkpoint for structured streaming.
+
+**16. How would you write unit tests for a PySpark transformation?**
+
+Use `pyspark.sql.SparkSession.builder.master("local[1]")` in a `pytest` fixture, create small sample data, apply the transformation, and assert results with `collect()` or `toPandas()`. Example:
+
+```python
+import pytest
+from pyspark.sql import SparkSession
+
+@pytest.fixture(scope="session")
+def spark():
+    return SparkSession.builder.master("local[2]").appName("test").getOrCreate()
+
+def test_normalize_cols(spark):
+    df = spark.createDataFrame([(1, "A")], ["ID", "Name"])
+    result = normalize_cols(df).columns
+    assert result == ["id", "name"]
+```
+
+**17. Explain how to handle late-arriving data in structured streaming using watermarks.**
+
+Use `withWatermark` on the event-time column and specify a delay threshold. Spark will maintain state only for the watermark duration and drop older events.
+
+```python
+stream = (spark.readStream.format("kafka") ...
+          .withWatermark("event_time", "1 hour")
+          .groupBy("key", window("event_time", "10 minutes"))
+          .count())
+```
+
+**18. Demonstrate joining multiple DataFrames and resolving column name conflicts.**
+
+```python
+df1 = spark.read.parquet(".../orders")
+df2 = spark.read.parquet(".../customers")
+
+joined = (df1.alias("o")
+          .join(df2.alias("c"), on=F.col("o.cust_id") == F.col("c.id"))
+          .select(F.col("o.*"), F.col("c.name").alias("cust_name")))
+```
+
+Use aliases and `alias()` to rename conflicting columns before selecting.
+
+**19. What's the difference between `foreachPartition` and `mapPartitions`? When would you use each?**
+
+`mapPartitions` applies a function to each partition and returns a new RDD/DataFrame; it's used when the transformation yields output. `foreachPartition` is for side effects only (e.g., writing to an external database) and returns no value. Use `foreachPartition` when you need to initialize a connection once per partition.
+
+**20. How can you integrate Delta Lake or another transactional storage format in PySpark?**
+
+Enable the Delta Lake package and write/read using the `delta` format:
+
+```python
+spark = (SparkSession.builder
+         .config("spark.jars.packages", "io.delta:delta-core_2.12:1.2.1")
+         .getOrCreate())
+
+(df.write.format("delta").mode("overwrite").save("/delta/table"))
+
+df = spark.read.format("delta").load("/delta/table")
+```
+
+Delta provides ACID transactions, time travel, and schema enforcement.
