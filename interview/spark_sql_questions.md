@@ -68,3 +68,29 @@
     - Ensure filters are pushed down and unnecessary columns are pruned.
     - Examine skews and repartition if needed.
     - Verify statistics are up to date and consider broadcasting small tables.
+
+
+11. **What are the advantages of using Spark SQL over traditional SQL engines?**
+
+    - Distributed processing for large datasets.
+    - Integration with various data sources (HDFS, S3, JDBC).
+    - Support for complex analytics and machine learning.
+    - Optimized execution with Catalyst and Tungsten.
+
+12. **How can you handle null values in Spark SQL? Provide an example using `coalesce`.**
+
+    ```sql query
+    SELECT id, COALESCE(name, 'Unknown') AS name FROM users;
+    ```  
+13. **Describe how to use window functions in Spark SQL. Provide an example to calculate a running total.**
+
+    ```sql query
+      SELECT id, amount, SUM(amount) OVER (PARTITION BY category ORDER BY date) AS running_total   FROM sales;
+    ```  
+
+14. **How do you perform a left semi join in Spark SQL? Provide an example.**
+
+    ```sql query
+    SELECT * FROM left_table l
+    SEMI JOIN right_table r ON l.key = r.key;
+    ```  
