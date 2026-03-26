@@ -230,4 +230,4 @@ Interview Preparation, Production-Ready Pipelines, Retail Analytics, Batch Proce
 
 ## License
 
-This project is intended for **learning, interview preparation, and demonstration purposes**.
+This project is intended for **learning, interview preparation, and demonstration purposes**. Thanks for visiting
