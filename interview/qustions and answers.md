@@ -43,6 +43,8 @@ delta_table = DeltaTable.forPath(spark, '/mnt/delta/target')
 8. What is incremental loading and how do you implement it?
 - Only process new/updated rows using watermark (e.g. LastModifiedDate), save last load timestamp in control table, query source with `WHERE modified > @watermark`, and apply Delta MERGE.
 
+
+
 9. Challenges you faced?
 - Large volume performance; solved with partitioning, caching, incremental loads, dynamic schema evolution.
 
