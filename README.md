@@ -196,6 +196,24 @@ Covered themes include:
 
 ---
 
+## Daily PySpark Interview Practice
+
+New date-based practice scripts are added under `daily/`. Each script includes a practical interview problem, sample DataFrames, a runnable PySpark solution, optimization guidance, expected results/assertions, and follow-up interview questions.
+
+### Latest Practice
+
+- [2026-10-27 — Incremental Loads, Late-Arriving Records, and Deduplication](daily/2026-10-27-incremental-load-late-arrivals.py): compare a straightforward snapshot merge approach with an incremental candidate approach using an ingestion-time lookback, deterministic latest-record selection, and assertions for idempotent final-state results.
+
+Run the example locally with:
+
+```bash
+spark-submit daily/2026-10-27-incremental-load-late-arrivals.py
+```
+
+The daily scripts use small in-memory sample datasets unless a practice explicitly requires an external source or service.
+
+---
+
 ## Future Enhancements
 
 - Delta Lake implementation (MERGE, time travel)
