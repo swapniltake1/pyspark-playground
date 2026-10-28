@@ -202,13 +202,16 @@ New date-based practice scripts are added under `daily/`. Each script includes a
 
 ### Latest Practice
 
+- [2026-10-28 — Nested Arrays, Explode, and Order Analytics](daily/2026-10-28-nested-arrays-order-analytics.py): compare item-level SKU aggregation using `explode` with an in-array higher-order `aggregate` for order totals, including empty/null arrays and result assertions.
 - [2026-10-27 — Incremental Loads, Late-Arriving Records, and Deduplication](daily/2026-10-27-incremental-load-late-arrivals.py): compare a straightforward snapshot merge approach with an incremental candidate approach using an ingestion-time lookback, deterministic latest-record selection, and assertions for idempotent final-state results.
 
-Run the example locally with:
+Run the latest example locally with:
 
 ```bash
-spark-submit daily/2026-10-27-incremental-load-late-arrivals.py
+spark-submit daily/2026-10-28-nested-arrays-order-analytics.py
 ```
+
+Previous practice: [2026-10-27 — Incremental Loads, Late-Arriving Records, and Deduplication](daily/2026-10-27-incremental-load-late-arrivals.py).
 
 The daily scripts use small in-memory sample datasets unless a practice explicitly requires an external source or service.
 
