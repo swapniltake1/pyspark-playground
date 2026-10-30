@@ -291,3 +291,7 @@ Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PyS
 - [Structured Streaming Watermarks & Event-Time Windows](daily/2026-10-31-0358-structured-streaming-watermarks.py) — deterministic batch assertions plus an optional file-source streaming pipeline.
 - Topics: replay deduplication, event-time tumbling windows, watermark-based state retention, append-mode output, checkpointing, and streaming operations.
 
+### Hourly Data Engineering Practice — 2026-10-31 04:58
+
+- [Conservative Customer Entity Resolution & Survivorship](daily/2026-10-31-0458-customer-entity-resolution.py) — a runnable PySpark scenario that normalizes CRM, billing, and support records, creates conservative exact-match blocking keys, assigns deterministic exercise entity IDs, applies field-level non-null survivorship by source priority, and flags conflicting/shared phone numbers for stewardship.
+- Includes explicit schemas, seven realistic source records, expected entity/survivorship assertions, formatted physical-plan inspection, optimization and privacy guidance, and interview follow-ups. Run with `spark-submit daily/2026-10-31-0458-customer-entity-resolution.py` on PySpark 3.3+.
