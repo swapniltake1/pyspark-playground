@@ -254,3 +254,10 @@ Interview Preparation, Production-Ready Pipelines, Retail Analytics, Batch Proce
 ## License
 
 This project is intended for **learning, interview preparation, and demonstration purposes**. Thanks for visiting
+
+### Hourly Data Engineering Practice — 2026-10-31 00:03
+
+- [Schema Drift Normalization and Row-Level Quarantine](daily/2026-10-31-0003-schema-drift-normalization.py) — a runnable PySpark scenario that normalizes three customer source schema versions into a stable contract, safely casts changing identifiers, routes invalid rows to quarantine with reason codes, and selects the latest valid customer state deterministically.
+- Includes explicit source schemas, in-memory sample DataFrames, expected row-count/customer assertions, optimization guidance, and production/Delta Lake interview follow-ups.
+
+Run with `spark-submit daily/2026-10-31-0003-schema-drift-normalization.py` on Spark 3.2+.
