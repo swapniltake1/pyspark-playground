@@ -80,8 +80,12 @@ def normalize_and_key(source_df):
         .withColumn(
             "phone_norm",
             F.when(
-                F.length(F.col("phone_digits")) >= 10,
-                F.expr("right(phone_digits, 10)")
+                (F.length(F.col("phone_digits")) == 11)
+                & (F.substring(F.col("phone_digits"), 1, 1) == "1"),
+                F.substring(F.col("phone_digits"), 2, 10)
+            ).when(
+                F.length(F.col("phone_digits")) == 10,
+                F.col("phone_digits")
             )
         )
         .withColumn("updated_ts", F.to_timestamp("updated_at"))
