@@ -277,3 +277,11 @@ Run with `spark-submit daily/2026-10-31-0104-partitioned-writes-small-files.py` 
 - Includes explicit in-memory event schemas, a replay with a later ingestion timestamp, successful/cancelled/in-progress orders, expected-result assertions, formatted physical-plan inspection, optimization guidance, and interview follow-ups.
 
 Run with spark-submit daily/2026-10-31-0200-order-state-machine-validation.py on PySpark 3.3+.
+
+
+### Hourly Data Engineering Practice — 2026-10-31 03:01
+
+- [Reusable Data-Quality Rule Engine & Row-Level Quarantine](daily/2026-10-31-0301-data-quality-rule-engine.py) — a runnable PySpark scenario that applies declarative customer checks for required fields, email format, country-domain membership, credit-limit range, timestamp chronology, and duplicate business keys; every invalid row is retained with all matching rule codes.
+- Includes explicit schemas, deterministic in-memory sample data, a broadcast reference lookup, rule-level failure metrics, expected row-count/customer-ID assertions, persistence guidance for repeated actions, and production interview follow-ups.
+
+Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PySpark 3.3+.
