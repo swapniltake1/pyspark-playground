@@ -285,3 +285,9 @@ Run with spark-submit daily/2026-10-31-0200-order-state-machine-validation.py on
 - Includes explicit schemas, deterministic in-memory sample data, a broadcast reference lookup, rule-level failure metrics, expected row-count/customer-ID assertions, persistence guidance for repeated actions, and production interview follow-ups.
 
 Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PySpark 3.3+.
+
+### Daily PySpark Practice — 2026-10-31 (03:58)
+
+- [Structured Streaming Watermarks & Event-Time Windows](daily/2026-10-31-0358-structured-streaming-watermarks.py) — deterministic batch assertions plus an optional file-source streaming pipeline.
+- Topics: replay deduplication, event-time tumbling windows, watermark-based state retention, append-mode output, checkpointing, and streaming operations.
+
