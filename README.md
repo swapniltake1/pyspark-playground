@@ -261,3 +261,11 @@ This project is intended for **learning, interview preparation, and demonstratio
 - Includes explicit source schemas, in-memory sample DataFrames, expected row-count/customer assertions, optimization guidance, and production/Delta Lake interview follow-ups.
 
 Run with `spark-submit daily/2026-10-31-0003-schema-drift-normalization.py` on Spark 3.2+.
+
+
+### Hourly Data Engineering Practice — 2026-10-31 01:04
+
+- [Partition-Aware Writes & Small-File Mitigation](daily/2026-10-31-0104-partitioned-writes-small-files.py) — a runnable PySpark scenario comparing an unkeyed repartition with a repartition aligned to the Parquet output partition key, then validating read-back row counts, unique transaction IDs, and output file counts.
+- Includes 1,200 deterministic sample transactions, physical-plan inspection, a cautious small-extract coalesce example, file-layout trade-offs, optimization guidance, and interview follow-ups.
+
+Run with `spark-submit daily/2026-10-31-0104-partitioned-writes-small-files.py` on PySpark 3.3+.
