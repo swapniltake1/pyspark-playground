@@ -12,8 +12,9 @@ a write distribution aligned to the output partition key.
 
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from typing import List
 
-from pyspark.sql import SparkSession, functions as F
+from pyspark.sql import SparkSession
 from pyspark.sql.types import (
     DoubleType,
     IntegerType,
@@ -23,7 +24,7 @@ from pyspark.sql.types import (
 )
 
 
-def parquet_part_files(root: Path) -> list[Path]:
+def parquet_part_files(root: Path) -> List[Path]:
     """Return only data files; ignore _SUCCESS and other metadata files."""
     return sorted(root.rglob("part-*.parquet"))
 
@@ -122,7 +123,7 @@ def main() -> None:
 
             # With the date key as the repartition key and no max-record split,
             # each non-empty date should be emitted by a single task.
-            assert 0 < optimized_files.__len__() <= date_count, (
+            assert 0 < len(optimized_files) <= date_count, (
                 f"Expected at most one data file per date, found {len(optimized_files)} "
                 f"for {date_count} dates"
             )
