@@ -269,3 +269,11 @@ Run with `spark-submit daily/2026-10-31-0003-schema-drift-normalization.py` on S
 - Includes 1,200 deterministic sample transactions, physical-plan inspection, a cautious small-extract coalesce example, file-layout trade-offs, optimization guidance, and interview follow-ups.
 
 Run with `spark-submit daily/2026-10-31-0104-partitioned-writes-small-files.py` on PySpark 3.3+.
+
+
+### Hourly Data Engineering Practice — 2026-10-31 02:00
+
+- [Order Lifecycle State-Machine Validation](daily/2026-10-31-0200-order-state-machine-validation.py) — a runnable PySpark scenario that deduplicates replayed event IDs, orders each order's event timeline deterministically, validates allowed state transitions, identifies invalid jumps, and calculates delivery lifecycle durations and current observed states.
+- Includes explicit in-memory event schemas, a replay with a later ingestion timestamp, successful/cancelled/in-progress orders, expected-result assertions, formatted physical-plan inspection, optimization guidance, and interview follow-ups.
+
+Run with spark-submit daily/2026-10-31-0200-order-state-machine-validation.py on PySpark 3.3+.
