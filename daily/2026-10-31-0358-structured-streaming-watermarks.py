@@ -126,9 +126,9 @@ def run_streaming_pipeline(spark, args):
     event-time aggregation. Append mode emits a window after Spark considers
     that window complete relative to the advancing watermark.
     """
+    # The file source must exist. Let Spark create the sink and checkpoint
+    # directories; pre-creating the sink can trigger file-sink path-exists errors.
     os.makedirs(args.input_path, exist_ok=True)
-    os.makedirs(args.output_path, exist_ok=True)
-    os.makedirs(args.checkpoint_path, exist_ok=True)
 
     incoming = (
         spark.readStream
