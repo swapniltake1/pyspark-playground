@@ -295,3 +295,9 @@ Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PyS
 
 - [Conservative Customer Entity Resolution & Survivorship](daily/2026-10-31-0458-customer-entity-resolution.py) — a runnable PySpark scenario that normalizes CRM, billing, and support records, creates conservative exact-match blocking keys, assigns deterministic exercise entity IDs, applies field-level non-null survivorship by source priority, and flags conflicting/shared phone numbers for stewardship.
 - Includes explicit schemas, seven realistic source records, expected entity/survivorship assertions, formatted physical-plan inspection, optimization and privacy guidance, and interview follow-ups. Run with `spark-submit daily/2026-10-31-0458-customer-entity-resolution.py` on PySpark 3.3+.
+
+
+### Hourly Data Engineering Practice — 2026-10-31 06:00
+
+- [Pipeline Lineage Graph Traversal & Downstream Impact Analysis](daily/2026-10-31-0600-pipeline-lineage-impact-analysis.py) — a runnable PySpark scenario that builds a medallion-style dependency graph, performs breadth-first downstream impact traversal with shortest dependency depth, validates edge references, and derives topological execution layers using Kahn's algorithm.
+- Includes deterministic sample nodes/edges, assertions for expected impacted jobs and DAG levels, deliberate orphan-edge and cycle tests, formatted physical-plan inspection, optimization guidance, and interview follow-ups. Run with `spark-submit daily/2026-10-31-0600-pipeline-lineage-impact-analysis.py` on PySpark 3.3+.
