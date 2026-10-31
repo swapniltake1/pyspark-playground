@@ -301,3 +301,9 @@ Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PyS
 
 - [Pipeline Lineage Graph Traversal & Downstream Impact Analysis](daily/2026-10-31-0600-pipeline-lineage-impact-analysis.py) — a runnable PySpark scenario that builds a medallion-style dependency graph, performs breadth-first downstream impact traversal with shortest dependency depth, validates edge references, and derives topological execution layers using Kahn's algorithm.
 - Includes deterministic sample nodes/edges, assertions for expected impacted jobs and DAG levels, deliberate orphan-edge and cycle tests, formatted physical-plan inspection, optimization guidance, and interview follow-ups. Run with `spark-submit daily/2026-10-31-0600-pipeline-lineage-impact-analysis.py` on PySpark 3.3+.
+
+
+### Hourly Data Engineering Practice — 2026-10-31 07:02
+
+- [Telemetry Wide-to-Long Normalization & Quality Validation](daily/2026-10-31-0702-telemetry-wide-to-long-quality.py) — a runnable PySpark scenario that unpivots wide device metrics into a metric-grain fact, validates values against a broadcast threshold dimension, preserves missing measurements, computes event completeness and device-hour quality rollups, and pivots the data back to its source contract.
+- Includes explicit schemas, deterministic in-memory telemetry, expected status-count and reconstruction assertions, formatted physical-plan inspection, optimization guidance, and interview follow-ups. Run with `spark-submit daily/2026-10-31-0702-telemetry-wide-to-long-quality.py` on PySpark 3.3+.
