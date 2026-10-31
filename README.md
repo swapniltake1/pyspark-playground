@@ -307,3 +307,9 @@ Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PyS
 
 - [Telemetry Wide-to-Long Normalization & Quality Validation](daily/2026-10-31-0702-telemetry-wide-to-long-quality.py) — a runnable PySpark scenario that unpivots wide device metrics into a metric-grain fact, validates values against a broadcast threshold dimension, preserves missing measurements, computes event completeness and device-hour quality rollups, and pivots the data back to its source contract.
 - Includes explicit schemas, deterministic in-memory telemetry, expected status-count and reconstruction assertions, formatted physical-plan inspection, optimization guidance, and interview follow-ups. Run with `spark-submit daily/2026-10-31-0702-telemetry-wide-to-long-quality.py` on PySpark 3.3+.
+
+
+### Hourly Data Engineering Practice — 2026-10-31 07:55
+
+- [Idempotent File Ingestion, Durable Manifest & Quarantine](daily/2026-10-31-0755-idempotent-file-ingestion-manifest.py) — a runnable PySpark scenario that validates landing-file metadata, removes repeated discoveries, quarantines conflicting checksums and mutated processed files, anti-joins against a durable processed manifest, deduplicates rows within new files, and separates accepted records from row-level quarantine.
+- Includes explicit in-memory schemas and sample manifests, expected file/row assertions, per-file accounting, physical-plan inspection, Delta-style transactional write guidance, small-file and broadcast considerations, and interview follow-ups. Run with spark-submit daily/2026-10-31-0755-idempotent-file-ingestion-manifest.py on PySpark 3.3+.
