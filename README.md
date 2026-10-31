@@ -313,3 +313,11 @@ Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PyS
 
 - [Idempotent File Ingestion, Durable Manifest & Quarantine](daily/2026-10-31-0755-idempotent-file-ingestion-manifest.py) — a runnable PySpark scenario that validates landing-file metadata, removes repeated discoveries, quarantines conflicting checksums and mutated processed files, anti-joins against a durable processed manifest, deduplicates rows within new files, and separates accepted records from row-level quarantine.
 - Includes explicit in-memory schemas and sample manifests, expected file/row assertions, per-file accounting, physical-plan inspection, Delta-style transactional write guidance, small-file and broadcast considerations, and interview follow-ups. Run with spark-submit daily/2026-10-31-0755-idempotent-file-ingestion-manifest.py on PySpark 3.3+.
+
+
+### Daily PySpark Interview Practice — 2026-10-31
+
+- [Multi-Dimensional Aggregations with rollup(), cube(), and grouping_id()](daily/2026-10-31-multidimensional-rollups.py) — a runnable retail analytics exercise that builds hierarchical regional subtotals with `rollup()` and all dimensional combinations with `cube()`, using `grouping_id()` to distinguish genuine NULL dimension values from subtotal rows.
+- Includes explicit DataFrame schemas, realistic completed/cancelled orders, expected revenue and order-count assertions, formatted physical-plan inspection, aggregation/shuffle optimization guidance, and interview follow-up questions.
+
+Run with `spark-submit daily/2026-10-31-multidimensional-rollups.py` on PySpark 3.x.
