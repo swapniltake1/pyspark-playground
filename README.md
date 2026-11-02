@@ -321,3 +321,11 @@ Run with `spark-submit daily/2026-10-31-0301-data-quality-rule-engine.py` on PyS
 - Includes explicit DataFrame schemas, realistic completed/cancelled orders, expected revenue and order-count assertions, formatted physical-plan inspection, aggregation/shuffle optimization guidance, and interview follow-up questions.
 
 Run with `spark-submit daily/2026-10-31-multidimensional-rollups.py` on PySpark 3.x.
+
+
+### Daily PySpark Interview Practice — 2026-11-02
+
+- [SCD Type 2 Customer Dimension with Change Detection](daily/2026-11-02-scd-type-2-customer-dimension.py) — a runnable PySpark exercise that compares a partial customer change feed with current dimension rows, expires changed versions, inserts new/current versions, preserves history, and validates half-open effective-date intervals.
+- Includes explicit schemas, realistic customer data, null-safe attribute comparisons, baseline and broadcast-assisted change detection, expected-state assertions, join/cache optimization guidance, late-arriving-change caveats, and interview follow-ups.
+
+Run with `spark-submit daily/2026-11-02-scd-type-2-customer-dimension.py` on PySpark 3.3+.
