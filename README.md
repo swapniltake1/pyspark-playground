@@ -329,3 +329,11 @@ Run with `spark-submit daily/2026-10-31-multidimensional-rollups.py` on PySpark 
 - Includes explicit schemas, realistic customer data, null-safe attribute comparisons, baseline and broadcast-assisted change detection, expected-state assertions, join/cache optimization guidance, late-arriving-change caveats, and interview follow-ups.
 
 Run with `spark-submit daily/2026-11-02-scd-type-2-customer-dimension.py` on PySpark 3.3+.
+
+
+### Daily PySpark Interview Practice — 2026-11-06
+
+- [CDC Upserts, Deletes & Idempotent Snapshots](daily/2026-11-06-cdc-upsert-delete-idempotency.py) — a runnable PySpark exercise that canonicalizes replayed CDC events, selects the latest source version deterministically, applies inserts/updates/deletes with tombstones, rejects stale late-arriving versions, and verifies repeat-batch idempotency.
+- Includes explicit schemas, in-memory customer event/current-state DataFrames, expected final-state assertions, version-ordering trade-offs, and interview follow-ups on source LSNs, Delta MERGE, tombstone retention, and atomic watermark advancement.
+
+Run with `spark-submit daily/2026-11-06-cdc-upsert-delete-idempotency.py` on PySpark 3.3+.
