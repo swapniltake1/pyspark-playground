@@ -202,6 +202,7 @@ New date-based practice scripts are added under `daily/`. Each script includes a
 
 ### Latest Practice
 
+- [2026-11-06 — Approximate Aggregations for API Observability](daily/2026-11-06-approximate-aggregations-api-observability.py): compare exact and HyperLogLog++ approximate unique-user counts, calculate grouped P50/P95/P99 latency and error indicators, inspect frequent endpoint candidates, and validate approximation accuracy on deterministic API events.
 - [2026-10-30 23:00 — Skew-Aware Joins with Deterministic Salting](daily/2026-10-30-2300-skew-aware-joins.py): detect hot keys, distribute fact rows across deterministic salt buckets, selectively replicate hot dimension rows, and assert that salted and baseline aggregates match.
 - [2026-10-30 — Event-Time Sessionization and Late-Arriving Events](daily/2026-10-30-event-time-sessionization.py): build deterministic inactivity-gap sessions with `lag` and cumulative windows; handle out-of-order arrivals, exact-threshold gaps, invalid records, and session boundary changes caused by late data.
 - [2026-10-28 — Nested Arrays, Explode, and Order Analytics](daily/2026-10-28-nested-arrays-order-analytics.py): compare item-level SKU aggregation using `explode` with an in-array higher-order `aggregate` for order totals, including empty/null arrays and result assertions.
@@ -210,10 +211,10 @@ New date-based practice scripts are added under `daily/`. Each script includes a
 Run the latest example locally with:
 
 ```bash
-spark-submit daily/2026-10-30-2300-skew-aware-joins.py
+spark-submit daily/2026-11-06-approximate-aggregations-api-observability.py
 ```
 
-Previous practice: [2026-10-30 — Event-Time Sessionization and Late-Arriving Events](daily/2026-10-30-event-time-sessionization.py).
+Previous practice: [2026-10-30 23:00 — Skew-Aware Joins with Deterministic Salting](daily/2026-10-30-2300-skew-aware-joins.py).
 
 The daily scripts use small in-memory sample datasets unless a practice explicitly requires an external source or service.
 
