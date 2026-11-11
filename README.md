@@ -198,6 +198,13 @@ Covered themes include:
 
 ## Daily PySpark Interview Practice
 
+### Latest Practice — 2026-11-11
+
+- [Rolling Demand Features & Leakage-Safe Forecasting](daily/2026-11-11-rolling-demand-forecast-features.py) — builds store/SKU lag features, prior-only rolling statistics, price-change and calendar features, next-day labels, demand-spike flags, baseline MAE, and feature-completeness checks. Includes deterministic in-memory DataFrames, assertions against target leakage, formatted plan inspection, and forecasting interview follow-ups.
+
+Run with `spark-submit daily/2026-11-11-rolling-demand-forecast-features.py` on Spark 3.x.
+
+
 New date-based practice scripts are added under `daily/`. Each script includes a practical interview problem, sample DataFrames, a runnable PySpark solution, optimization guidance, expected results/assertions, and follow-up interview questions.
 
 ### Latest Practice
