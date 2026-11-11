@@ -15,7 +15,7 @@ Compatible with PySpark 3.x. No external files or third-party Python packages
 are required.
 """
 from math import asin, cos, radians, sin, sqrt
-from pyspark.sql import SparkSession, Window
+from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import (
     StructType, StructField, StringType, DoubleType
@@ -81,11 +81,12 @@ def build_delivery_features(shipments, hubs, optimized):
     else:
         joined = shipments.join(hubs, "hub_id", "left")
 
-    coordinates_valid = (
+    coordinates_valid = F.coalesce(
         F.col("hub_lat").between(-90.0, 90.0)
         & F.col("hub_lon").between(-180.0, 180.0)
         & F.col("destination_lat").between(-90.0, 90.0)
-        & F.col("destination_lon").between(-180.0, 180.0)
+        & F.col("destination_lon").between(-180.0, 180.0),
+        F.lit(False)
     )
 
     if optimized:
@@ -100,7 +101,8 @@ def build_delivery_features(shipments, hubs, optimized):
             "distance_km",
             F.round(
                 distance_udf(
-                    "hub_lat", "hub_lon", "destination_lat", "destination_lon"
+                    F.col("hub_lat"), F.col("hub_lon"),
+                    F.col("destination_lat"), F.col("destination_lon")
                 ),
                 3
             )
