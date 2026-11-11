@@ -200,6 +200,8 @@ Covered themes include:
 
 ### Latest Practice — 2026-11-11
 
+- [Effective-Dated Temporal Joins & Point-in-Time Lookups](daily/2026-11-11-effective-dated-temporal-joins.py) — enriches order events with the product price valid at each event timestamp using half-open effective-date intervals. Compares a readable range join with a projected broadcast-dimension path, preserves unmatched/null-timestamp events, validates interval basics and one-row-per-event results, and asserts boundary-date correctness.
+
 - [Native Geospatial Expressions vs Python UDF](daily/2026-11-11-native-geospatial-expressions-vs-udf.py) — calculates delivery-to-hub great-circle distance, validates missing/invalid coordinates, and classifies serviceability. Compares a regular Python UDF with native Spark SQL expressions, verifies numerical equivalence, and uses a broadcast hub dimension with a narrow projection for the optimized path.
 
 - [Rolling Demand Features & Leakage-Safe Forecasting](daily/2026-11-11-rolling-demand-forecast-features.py) — builds store/SKU lag features, prior-only rolling statistics, price-change and calendar features, next-day labels, demand-spike flags, baseline MAE, and feature-completeness checks. Includes deterministic in-memory DataFrames, assertions against target leakage, formatted plan inspection, and forecasting interview follow-ups.
