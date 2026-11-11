@@ -200,9 +200,11 @@ Covered themes include:
 
 ### Latest Practice — 2026-11-11
 
+- [Native Geospatial Expressions vs Python UDF](daily/2026-11-11-native-geospatial-expressions-vs-udf.py) — calculates delivery-to-hub great-circle distance, validates missing/invalid coordinates, and classifies serviceability. Compares a regular Python UDF with native Spark SQL expressions, verifies numerical equivalence, and uses a broadcast hub dimension with a narrow projection for the optimized path.
+
 - [Rolling Demand Features & Leakage-Safe Forecasting](daily/2026-11-11-rolling-demand-forecast-features.py) — builds store/SKU lag features, prior-only rolling statistics, price-change and calendar features, next-day labels, demand-spike flags, baseline MAE, and feature-completeness checks. Includes deterministic in-memory DataFrames, assertions against target leakage, formatted plan inspection, and forecasting interview follow-ups.
 
-Run with `spark-submit daily/2026-11-11-rolling-demand-forecast-features.py` on Spark 3.x.
+Run the geospatial exercise with `spark-submit daily/2026-11-11-native-geospatial-expressions-vs-udf.py` on Spark 3.x. The rolling-demand exercise is also available in the same folder.
 
 
 New date-based practice scripts are added under `daily/`. Each script includes a practical interview problem, sample DataFrames, a runnable PySpark solution, optimization guidance, expected results/assertions, and follow-up interview questions.
