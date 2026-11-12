@@ -200,9 +200,11 @@ Covered themes include:
 
 ### Latest Practice — 2026-11-12
 
+- [Skew-Aware Two-Phase Aggregations with Deterministic Salting](daily/2026-11-12-skew-aware-aggregations.py) — builds a deliberately skewed clickstream DataFrame, profiles tenant concentration, and compares a baseline groupBy with a two-stage salted aggregation. Includes stable hash-based salt assignment, additive count/sum merging, exact equivalence and expected-result assertions, salt-distribution checks, formatted physical plans, optimization trade-offs, and interview follow-ups.
+
 - [NULL Semantics, NOT IN & Left Anti Joins](daily/2026-11-12-null-semantics-and-anti-joins.py) — explains SQL three-valued logic when exclusion lists contain NULL, contrasts NOT IN with equality-based and NULL-safe left anti joins, and implements an explicit quarantine policy for missing customer keys. Includes duplicate suppression keys, an optimized broadcast anti-join path for a small reference set, deterministic assertions, physical-plan inspection, and interview follow-ups.
 
-Run with `spark-submit daily/2026-11-12-null-semantics-and-anti-joins.py` on PySpark 3.x.
+Run the skew-aware aggregation exercise with `spark-submit daily/2026-11-12-skew-aware-aggregations.py` on PySpark 3.x. The NULL-semantics exercise is also available in the same folder.
 
 ### Previous Practice — 2026-11-11
 
