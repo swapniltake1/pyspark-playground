@@ -198,6 +198,14 @@ Covered themes include:
 
 ## Daily PySpark Interview Practice
 
+### Latest Practice — 2026-11-12
+
+- [NULL Semantics, NOT IN & Left Anti Joins](daily/2026-11-12-null-semantics-and-anti-joins.py) — explains SQL three-valued logic when exclusion lists contain NULL, contrasts NOT IN with equality-based and NULL-safe left anti joins, and implements an explicit quarantine policy for missing customer keys. Includes duplicate suppression keys, an optimized broadcast anti-join path for a small reference set, deterministic assertions, physical-plan inspection, and interview follow-ups.
+
+Run with `spark-submit daily/2026-11-12-null-semantics-and-anti-joins.py` on PySpark 3.x.
+
+### Previous Practice — 2026-11-11
+
 ### Latest Practice — 2026-11-11
 
 - [Effective-Dated Temporal Joins & Point-in-Time Lookups](daily/2026-11-11-effective-dated-temporal-joins.py) — enriches order events with the product price valid at each event timestamp using half-open effective-date intervals. Compares a readable range join with a projected broadcast-dimension path, preserves unmatched/null-timestamp events, validates interval basics and one-row-per-event results, and asserts boundary-date correctness.
