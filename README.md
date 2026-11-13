@@ -202,7 +202,9 @@ Covered themes include:
 
 - [Priority-Based Inventory Allocation with Cumulative Windows](daily/2026-11-13-priority-inventory-allocation.py) — allocates warehouse/SKU stock to order lines in deterministic priority, timestamp, and line-ID order. Compares a baseline left join with a projected broadcast-inventory join, uses a preceding-row cumulative window to calculate partial fulfillment and unfilled quantities, and validates result equivalence, expected allocations, and stock-capacity limits.
 
-Run with `spark-submit daily/2026-11-13-priority-inventory-allocation.py` on PySpark 3.x.
+- [Spark Accumulators vs DataFrame-Native Data-Quality Metrics](daily/2026-11-13-accumulators-vs-dataframe-quality-metrics.py) — contrasts diagnostic accumulator counters with authoritative DataFrame-native rule metrics for a payments ingestion pipeline. Compares repeated per-rule count actions with a single aggregation, classifies overlapping quality failures, separates valid and quarantined events, and explains caching and accumulator retry/recomputation caveats.
+
+Run with `spark-submit daily/2026-11-13-accumulators-vs-dataframe-quality-metrics.py` on PySpark 3.x. The priority-allocation exercise is also available in the same folder.
 
 ### Latest Practice — 2026-11-12
 
