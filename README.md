@@ -198,6 +198,12 @@ Covered themes include:
 
 ## Daily PySpark Interview Practice
 
+### Latest Practice — 2026-11-13
+
+- [Priority-Based Inventory Allocation with Cumulative Windows](daily/2026-11-13-priority-inventory-allocation.py) — allocates warehouse/SKU stock to order lines in deterministic priority, timestamp, and line-ID order. Compares a baseline left join with a projected broadcast-inventory join, uses a preceding-row cumulative window to calculate partial fulfillment and unfilled quantities, and validates result equivalence, expected allocations, and stock-capacity limits.
+
+Run with `spark-submit daily/2026-11-13-priority-inventory-allocation.py` on PySpark 3.x.
+
 ### Latest Practice — 2026-11-12
 
 - [Skew-Aware Two-Phase Aggregations with Deterministic Salting](daily/2026-11-12-skew-aware-aggregations.py) — builds a deliberately skewed clickstream DataFrame, profiles tenant concentration, and compares a baseline groupBy with a two-stage salted aggregation. Includes stable hash-based salt assignment, additive count/sum merging, exact equivalence and expected-result assertions, salt-distribution checks, formatted physical plans, optimization trade-offs, and interview follow-ups.
