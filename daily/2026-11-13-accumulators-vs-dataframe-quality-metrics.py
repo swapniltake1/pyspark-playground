@@ -204,13 +204,12 @@ def naive_multiple_actions(source_df):
     return result
 
 
-def accumulator_diagnostic_pass(source_df):
+def accumulator_diagnostic_pass(source_df, sc):
     """
     Demonstration only. Accumulators are handy for lightweight diagnostics
     inside RDD transformations, but task retries/recomputation can make
     transformation-side updates unsuitable as authoritative business counts.
     """
-    sc = source_df.sparkSession.sparkContext
     missing_account_acc = sc.accumulator(0)
     invalid_amount_acc = sc.accumulator(0)
 
@@ -268,7 +267,7 @@ def main():
         ):
             assert baseline[metric] == optimized[metric]
 
-        accumulator_diagnostic_pass(source_df)
+        accumulator_diagnostic_pass(source_df, spark.sparkContext)
 
         print("\nInterview takeaways:")
         print("1. Why can accumulator updates in transformations be repeated?")
