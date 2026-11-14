@@ -198,6 +198,14 @@ Covered themes include:
 
 ## Daily PySpark Interview Practice
 
+
+### Latest Practice — 2026-11-14
+
+- [Partition Pruning, Column Pruning & Small-File-Aware Parquet Layout](daily/2026-11-14-partition-pruning-and-small-files.py) — compares unpartitioned and month-partitioned Parquet sales layouts, applies a direct partition-key predicate and narrow projection, verifies identical October results and totals, and inspects formatted physical plans. Includes realistic in-memory retail data, assertions, partition-directory checks, and guidance on file sizing, repartition versus coalesce, and avoiding high-cardinality partition keys.
+
+Run with `spark-submit daily/2026-11-14-partition-pruning-and-small-files.py` on PySpark 3.x.
+
+
 ### Latest Practice — 2026-11-13
 
 - [Priority-Based Inventory Allocation with Cumulative Windows](daily/2026-11-13-priority-inventory-allocation.py) — allocates warehouse/SKU stock to order lines in deterministic priority, timestamp, and line-ID order. Compares a baseline left join with a projected broadcast-inventory join, uses a preceding-row cumulative window to calculate partial fulfillment and unfilled quantities, and validates result equivalence, expected allocations, and stock-capacity limits.
