@@ -203,7 +203,9 @@ Covered themes include:
 
 - [Partition Pruning, Column Pruning & Small-File-Aware Parquet Layout](daily/2026-11-14-partition-pruning-and-small-files.py) — compares unpartitioned and month-partitioned Parquet sales layouts, applies a direct partition-key predicate and narrow projection, verifies identical October results and totals, and inspects formatted physical plans. Includes realistic in-memory retail data, assertions, partition-directory checks, and guidance on file sizing, repartition versus coalesce, and avoiding high-cardinality partition keys.
 
-Run with `spark-submit daily/2026-11-14-partition-pruning-and-small-files.py` on PySpark 3.x.
+- [Leakage-Safe, Deterministic Stratified Train/Validation/Test Splits](daily/2026-11-14-leakage-safe-stratified-splits.py) — demonstrates why event-level random splits can leak customer entities across model datasets, then assigns one stable split per customer using hash ordering within churn-label strata. Compares a randomSplit baseline with exact 60/20/20 class allocation, applies a narrow broadcast assignment map to event facts, and asserts class counts, entity isolation, row preservation, and stability after repartitioning.
+
+Run the stratified-split exercise with `spark-submit daily/2026-11-14-leakage-safe-stratified-splits.py` on PySpark 3.x. The partition-pruning exercise is also available in the same folder.
 
 
 ### Latest Practice — 2026-11-13
