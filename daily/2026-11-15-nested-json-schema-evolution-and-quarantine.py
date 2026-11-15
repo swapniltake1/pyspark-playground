@@ -180,7 +180,8 @@ def classify_events(parsed):
         F.exists(
             F.col("items"),
             lambda item: (
-                item["sku"].isNull()
+                item.isNull()
+                | item["sku"].isNull()
                 | item["qty"].isNull()
                 | (item["qty"] <= 0)
                 | item["unit_price"].isNull()
