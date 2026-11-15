@@ -199,6 +199,14 @@ Covered themes include:
 ## Daily PySpark Interview Practice
 
 
+### Latest Practice — 2026-11-15
+
+- [Nested JSON Parsing, Schema Evolution & Malformed-Record Quarantine](daily/2026-11-15-nested-json-schema-evolution-and-quarantine.py) — parses two producer contract versions with explicit schemas, unions additive fields by name, retains malformed payloads through a corrupt-record column, and routes semantic failures to quarantine with multiple reason codes. Compares item-level explode/groupBy metrics with an in-array higher-order aggregation that avoids row expansion and a shuffle; includes realistic nested event DataFrames, V1/V2 compatibility assertions, expected order totals, physical-plan inspection, optimization guidance, and interview follow-ups.
+
+Run with `spark-submit daily/2026-11-15-nested-json-schema-evolution-and-quarantine.py` on PySpark 3.1+.
+
+
+
 ### Latest Practice — 2026-11-14
 
 - [Partition Pruning, Column Pruning & Small-File-Aware Parquet Layout](daily/2026-11-14-partition-pruning-and-small-files.py) — compares unpartitioned and month-partitioned Parquet sales layouts, applies a direct partition-key predicate and narrow projection, verifies identical October results and totals, and inspects formatted physical plans. Includes realistic in-memory retail data, assertions, partition-directory checks, and guidance on file sizing, repartition versus coalesce, and avoiding high-cardinality partition keys.
