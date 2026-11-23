@@ -385,3 +385,9 @@ Run with `spark-submit daily/2026-11-02-scd-type-2-customer-dimension.py` on PyS
 - Includes explicit schemas, in-memory customer event/current-state DataFrames, expected final-state assertions, version-ordering trade-offs, and interview follow-ups on source LSNs, Delta MERGE, tombstone retention, and atomic watermark advancement.
 
 Run with `spark-submit daily/2026-11-06-cdc-upsert-delete-idempotency.py` on PySpark 3.3+.
+
+
+### Latest Practice — 2026-11-23: Customer Touch Attribution
+
+- [Deterministic Customer-Level Multi-Touch Attribution](daily/2026-11-23-customer-touch-attribution.py) — deduplicates replayed events, applies a 30-day last-non-direct attribution rule, preserves direct conversions without overwriting prior marketing touches, enriches with a broadcast campaign dimension, and builds channel-level conversion/revenue metrics.
+- Includes deterministic tie-breaking, expected assertions, physical-plan inspection, range-join optimization guidance, and interview follow-ups. Run with `spark-submit daily/2026-11-23-customer-touch-attribution.py` on PySpark 3.x.
