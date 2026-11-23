@@ -142,9 +142,14 @@ def convert_payments(payments, preferred_rates, use_broadcast=False):
         )
     )
 
+    # The baseline sends null-amount settled rows through the join; the optimized
+    # path removes them first because they cannot be converted.
+    join_source = settled
+    if use_broadcast:
+        join_source = join_source.where(F.col("amount").isNotNull())
+
     join_input = (
-        settled
-        .where(F.col("amount").isNotNull())
+        join_source
         .select("payment_id", "customer_id", "txn_date", "currency", "amount", "event_type")
         .alias("p")
     )
@@ -174,7 +179,7 @@ def convert_payments(payments, preferred_rates, use_broadcast=False):
 
     missing_rates = (
         joined
-        .where(F.col("inr_per_unit").isNull())
+        .where(F.col("amount").isNotNull() & F.col("inr_per_unit").isNull())
         .select(
             "payment_id", "customer_id", "txn_date", "currency", "amount",
             F.lit("MISSING_FX_RATE").alias("quarantine_reason"),
@@ -183,7 +188,7 @@ def convert_payments(payments, preferred_rates, use_broadcast=False):
 
     converted = (
         joined
-        .where(F.col("inr_per_unit").isNotNull())
+        .where(F.col("amount").isNotNull() & F.col("inr_per_unit").isNotNull())
         # Explicit policy: round each converted payment/refund to 2 INR decimals.
         .withColumn(
             "inr_amount",
