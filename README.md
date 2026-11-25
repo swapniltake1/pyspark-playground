@@ -198,6 +198,12 @@ Covered themes include:
 
 ## Daily PySpark Interview Practice
 
+### Latest Practice — 2026-11-25
+
+- [Time-Zone-Safe Event Timestamp Normalization & DST Handling](daily/2026-11-25-timezone-safe-event-timestamps.py) — parses offset-bearing ISO-8601 events into canonical UTC instants, derives region-local business dates from an IANA time-zone lookup, and quarantines malformed timestamps or unknown regions. Includes New York's repeated fall-back hour, UTC-versus-local-date assertions, baseline and broadcast-lookup implementations, output-equivalence checks, formatted physical-plan inspection, production caveats, and interview follow-ups.
+
+Run with `spark-submit daily/2026-11-25-timezone-safe-event-timestamps.py` on PySpark 3.x.
+
 
 ### Latest Practice — 2026-11-15
 
