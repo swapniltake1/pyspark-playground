@@ -398,3 +398,10 @@ Run with `spark-submit daily/2026-11-06-cdc-upsert-delete-idempotency.py` on PyS
 - [Deterministic Customer-Level Multi-Touch Attribution](daily/2026-11-23-customer-touch-attribution.py) — deduplicates replayed events, applies a 30-day last-non-direct attribution rule, preserves direct conversions without overwriting prior marketing touches, enriches with a broadcast campaign dimension, and builds channel-level conversion/revenue metrics.
 - Includes deterministic tie-breaking, expected assertions, physical-plan inspection, range-join optimization guidance, and interview follow-ups. Run with `spark-submit daily/2026-11-23-customer-touch-attribution.py` on PySpark 3.x.
 - [Decimal Precision, FX Conversion & Financial Rounding](daily/2026-11-23-decimal-precision-and-fx-conversion.py) — converts settled multi-currency payments with DecimalType, deterministically selects preferred provider rates, quarantines missing amounts/rates, and compares per-line versus post-aggregation rounding. Includes baseline and broadcast-join paths, daily/overall INR control totals, equivalence assertions, physical-plan inspection, and interview follow-ups. Run with `spark-submit daily/2026-11-23-decimal-precision-and-fx-conversion.py` on PySpark 3.x.
+
+
+### Latest Practice — 2026-11-26
+
+- [Structured Streaming Deduplication & Idempotent foreachBatch Writes](daily/2026-11-26-structured-streaming-idempotent-foreachbatch.py) — demonstrates event-time watermarks, bounded duplicate state, invalid-event filtering, micro-batch aggregation, and deterministic per-batch output. Explains why foreachBatch is at-least-once by default, why batch IDs alone do not deduplicate business events across batches, and how a production MERGE/UPSERT keyed by event_id strengthens sink idempotency.
+
+Run with `spark-submit daily/2026-11-26-structured-streaming-idempotent-foreachbatch.py` on Spark 3.5+. The sample uses a local JSON file stream and includes aggregate assertions.
