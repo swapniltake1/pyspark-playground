@@ -400,6 +400,12 @@ Run with `spark-submit daily/2026-11-06-cdc-upsert-delete-idempotency.py` on PyS
 - [Decimal Precision, FX Conversion & Financial Rounding](daily/2026-11-23-decimal-precision-and-fx-conversion.py) — converts settled multi-currency payments with DecimalType, deterministically selects preferred provider rates, quarantines missing amounts/rates, and compares per-line versus post-aggregation rounding. Includes baseline and broadcast-join paths, daily/overall INR control totals, equivalence assertions, physical-plan inspection, and interview follow-ups. Run with `spark-submit daily/2026-11-23-decimal-precision-and-fx-conversion.py` on PySpark 3.x.
 
 
+### Latest Practice — 2026-11-27
+
+- [Multi-Source Settlement Reconciliation with Union-Based Aggregation](daily/2026-11-27-multi-source-settlement-reconciliation.py) — reconciles transaction-level ledger and processor feeds by a composite settlement/currency key, quarantines incomplete records, and classifies matches, amount mismatches, and one-sided settlements. Compares aggregate-then-full-outer-join with a union plus conditional aggregation that can reduce shuffle stages; includes DecimalType amounts, tolerance-based assertions, output equivalence checks, a formatted physical-plan inspection, optimization trade-offs, and interview follow-ups.
+
+Run with `spark-submit daily/2026-11-27-multi-source-settlement-reconciliation.py` on PySpark 3.x.
+
 ### Latest Practice — 2026-11-26
 
 - [Structured Streaming Deduplication & Idempotent foreachBatch Writes](daily/2026-11-26-structured-streaming-idempotent-foreachbatch.py) — demonstrates event-time watermarks, bounded duplicate state, invalid-event filtering, micro-batch aggregation, and deterministic per-batch output. Explains why foreachBatch is at-least-once by default, why batch IDs alone do not deduplicate business events across batches, and how a production MERGE/UPSERT keyed by event_id strengthens sink idempotency.
