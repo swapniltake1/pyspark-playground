@@ -400,6 +400,12 @@ Run with `spark-submit daily/2026-11-06-cdc-upsert-delete-idempotency.py` on PyS
 - [Decimal Precision, FX Conversion & Financial Rounding](daily/2026-11-23-decimal-precision-and-fx-conversion.py) — converts settled multi-currency payments with DecimalType, deterministically selects preferred provider rates, quarantines missing amounts/rates, and compares per-line versus post-aggregation rounding. Includes baseline and broadcast-join paths, daily/overall INR control totals, equivalence assertions, physical-plan inspection, and interview follow-ups. Run with `spark-submit daily/2026-11-23-decimal-precision-and-fx-conversion.py` on PySpark 3.x.
 
 
+### Latest Practice — 2026-11-28
+
+- [Multi-Level Bill of Materials Explosion & Cycle Detection](daily/2026-11-28-bill-of-materials-explosion-and-cycle-detection.py) — validates BOM parent/child references and positive quantities, iteratively expands root assemblies with path-local cycle detection, multiplies quantities along each path, and aggregates terminal-component requirements across converging paths. Compares baseline joins with a cached/broadcast edge lookup for a small reusable BOM, quarantines malformed edges, and asserts expected leaf quantities, the detected cycle path, and baseline/optimized output equivalence.
+
+Run with `spark-submit daily/2026-11-28-bill-of-materials-explosion-and-cycle-detection.py` on PySpark 3.x.
+
 ### Latest Practice — 2026-11-27
 
 - [Multi-Source Settlement Reconciliation with Union-Based Aggregation](daily/2026-11-27-multi-source-settlement-reconciliation.py) — reconciles transaction-level ledger and processor feeds by a composite settlement/currency key, quarantines incomplete records, and classifies matches, amount mismatches, and one-sided settlements. Compares aggregate-then-full-outer-join with a union plus conditional aggregation that can reduce shuffle stages; includes DecimalType amounts, tolerance-based assertions, output equivalence checks, a formatted physical-plan inspection, optimization trade-offs, and interview follow-ups.
